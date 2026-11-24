@@ -17,7 +17,7 @@ export const CalendarCard: React.FC<Props> = ({ day, status }) => {
   const faceClassName = [
     'relative flex aspect-square h-full flex-col justify-between overflow-hidden rounded-3xl border p-4 text-left transition',
     isAvailable
-      ? 'border-gold/80 bg-cream text-ink shadow-[0_16px_40px_rgba(0,0,0,0.22)] hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(0,0,0,0.28)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold'
+      ? 'cursor-pointer border-gold/80 bg-cream text-ink shadow-[0_16px_40px_rgba(0,0,0,0.22)] hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(0,0,0,0.28)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold'
       : isBerry
         ? 'border-gold/35 bg-[#72283a] text-cream'
         : 'border-gold/35 bg-[#1b4a3b] text-cream',
