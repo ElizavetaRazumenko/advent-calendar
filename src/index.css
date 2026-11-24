@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: Manrope, system-ui, sans-serif;
+  --color-pine: #14382d;
+  --color-pine-deep: #0c241d;
+  --color-cream: #f7f1e6;
+  --color-gold: #e7c98a;
+  --color-burgundy: #7c2436;
+  --color-ink: #1c2a24;
+}
+
+html {
+  background-color: var(--color-pine-deep);
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  font-family: var(--font-sans);
+  color: var(--color-cream);
+  background:
+    radial-gradient(ellipse 80% 45% at 50% -10%, rgba(231, 201, 138, 0.2), transparent 55%),
+    radial-gradient(ellipse 42% 36% at 100% 100%, rgba(124, 36, 54, 0.42), transparent 62%),
+    radial-gradient(ellipse 36% 32% at 0% 78%, rgba(20, 72, 54, 0.7), transparent 70%),
+    linear-gradient(180deg, #10281f 0%, #17392d 46%, #0e221c 100%);
+}
+
+#root {
+  min-height: 100svh;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translate3d(0, -12vh, 0);
+  }
+
+  100% {
+    transform: translate3d(18px, 108vh, 0);
+  }
+}
+
+.snowflake {
+  animation-name: snowfall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snowflake {
+    animation: none;
+    display: none;
+  }
+}

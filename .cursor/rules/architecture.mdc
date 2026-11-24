@@ -1,0 +1,70 @@
+---
+description: Куда класть код и когда выносить общее из компонента
+alwaysApply: true
+---
+
+# Архитектура
+
+Импорты из `src/...`. Именованные экспорты. Папки в kebab-case, файл компонента — `PascalCase.tsx`. Новый код кладётся в уже существующий слой, новые корневые папки не заводить.
+
+## Слои
+
+- `src/pages/<name>-page/` — экран и его дерево. Точка входа: `<Name>Page.tsx`.
+- `src/components/common/` — UI для нескольких экранов. Оболочка (`root-layout`, `error-boundary`, telegram) лежит прямо в `src/components/`.
+- `src/api/<domain>/` — `module.ts` (HTTP), `queries.ts` (React Query), `types.ts` (контракт API), `constants.ts`. Общая пагинация — `src/api/common/types.ts`.
+- `src/http/` — клиент. Дерево роутов — `src/routes/routes.ts`, пути — `src/constants/routes.ts`.
+- `src/helpers/` — функции. `src/constants/` — константы. `src/types/` — UI-модели поверх API. `src/schemas/` — схемы zod для нескольких компонентов. `src/hooks/` — общие хуки. `src/errors/` — ошибки. `src/utils/` — только утилиты без домена, например дата.
+
+## Рядом с одним компонентом
+
+Пока файл нужен только этому компоненту и его детям, он лежит в папке этого компонента: `constants.ts`, `types.ts`, `helpers.ts`, `schema.ts`, `useX.ts`. Пропсы одного компонента остаются в его `.tsx`.
+
+`components/` содержит только папки дочерних компонентов. Хелперы, типы и константы экрана лежат рядом с файлом экрана, не внутри `components/`.
+
+Родитель импортирует детей из `./components/<name>/<Name>`. Ребёнок не импортирует папку соседнего компонента.
+
+## Больше одного компонента — глобальный слой
+
+Если helper, компонент, тип, хук или константа нужны второму компоненту, перенеси их в глобальную папку того же вида. Не импортируй их из папки другого компонента и не оставляй на старом месте реэкспорт.
+
+- компонент → `src/components/common/<name>/`
+- функция → `src/helpers/<domain>.ts`
+- тип UI → `src/types/<domain>.ts`; тип ответа API → `src/api/<domain>/types.ts`
+- хук → `src/hooks/useX.ts` или `src/hooks/useX/`
+- константа → `src/constants/<domain>.ts`
+- схема → `src/schemas/<domain>.ts`
+
+Общий хук может держать свои `types.ts` и `helpers.ts` только внутри `src/hooks/useX/`. Снаружи импортируют сам хук, а не эти файлы.
+
+## В файле только свой вид
+
+- `types.ts` — типы и enum контракта. Без функций и констант.
+- `helpers.ts` — функции. Без типов и констант.
+- `constants.ts` — константы и подписи. Без функций и типов.
+- `schema.ts` — схемы zod. Рядом с формой, пока она одна; если схема нужна второму компоненту — `src/schemas/<domain>.ts`.
+- `module.ts` — запросы. `queries.ts` — хуки React Query. Не смешивать.
+
+```ts
+// плохо: тип и константа в helpers.ts
+export type ShopRow = { id: number };
+export const SHOPS_LIMIT = 20;
+
+// хорошо
+// types.ts: export type ShopRow = { id: number };
+// constants.ts: export const SHOPS_LIMIT = 20;
+// helpers.ts: export const getShopRows = (): ShopRow[] => [];
+```
+
+```ts
+// плохо: хелпер взят из другого компонента
+import { getShopPlatformRows } from '../platform/helpers';
+
+// хорошо
+import { getShopPlatformRows } from 'src/helpers/shops';
+```
+
+```text
+плохо:  feature/components/helpers.ts
+хорошо: feature/helpers.ts
+        feature/components/platform/helpers.ts  — только для Platform
+```
