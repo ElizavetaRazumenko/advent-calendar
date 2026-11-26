@@ -1,6 +1,7 @@
 import type React from 'react';
 import { Link } from 'react-router-dom'
-import { formatOpenLabel, getGiftPath } from './helpers.ts'
+import { formatOpenLabel } from 'src/helpers/dates.ts'
+import { getGiftPath } from './helpers.ts'
 import type { AdventDay, AdventDayStatus } from 'src/types/main.ts'
 import { Ribbon } from './components/ribbon/Ribbon.tsx';
 

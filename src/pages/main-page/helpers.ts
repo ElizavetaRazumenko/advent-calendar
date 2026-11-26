@@ -9,7 +9,10 @@ export const getDateKey = (date: Date): string => {
 }
 
 export const getAdventDayStatus = (openDate: string, today = new Date()): AdventDayStatus => {
-  const todayKey = getDateKey(today)
+  const todayKey = getDateKey(today);
+ 
+  // TODO: remove this line after testing
+  return 'opened'
 
   if (todayKey === openDate) {
     return 'today'

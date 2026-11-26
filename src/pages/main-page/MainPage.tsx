@@ -1,6 +1,7 @@
-import { ADVENT_DAYS, MAIN_SUBTITLE, MAIN_TITLE } from './constants.ts'
+import { Snowfall } from 'src/components/common/snowfall/Snowfall.tsx'
+import { ADVENT_DAYS } from 'src/constants/calendar.ts'
 import { CalendarCard } from './components/calendar-card/CalendarCard.tsx'
-import { Snowfall } from './components/snowfall/Snowfall.tsx'
+import { MAIN_SUBTITLE, MAIN_TITLE } from './constants.ts'
 import { getAdventDayStatus } from './helpers.ts'
 
 export const MainPage = () => {
