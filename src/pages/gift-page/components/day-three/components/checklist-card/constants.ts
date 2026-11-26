@@ -1,0 +1,1 @@
+export const STORAGE_KEY = 'advent-day-3-checklist'
