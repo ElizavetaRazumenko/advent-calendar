@@ -1,9 +1,9 @@
+import { DayHero } from 'src/components/common/day-hero/DayHero.tsx'
 import { LetterCard } from 'src/components/common/letter-card/LetterCard.tsx'
 import { PracticeCard } from 'src/components/common/practice-card/PracticeCard.tsx'
+import { RecipeCard } from 'src/components/common/recipe-card/RecipeCard.tsx'
 import { formatOpenLabel } from 'src/helpers/dates.ts'
 import type { AdventDay } from 'src/types/main.ts'
-import { CocoaRecipe } from './components/cocoa-recipe/CocoaRecipe.tsx'
-import { DayHero } from './components/day-hero/DayHero.tsx'
 import { PlaylistCard } from './components/playlist-card/PlaylistCard.tsx'
 import {
   DAY_ONE_INGREDIENTS,
@@ -36,11 +36,11 @@ export const DayOne = ({ day }: Props) => {
         text={DAY_ONE_PRACTICE_TEXT}
         steps={DAY_ONE_PRACTICE_STEPS}
       />
-      <CocoaRecipe
+      <RecipeCard
         label={DAY_ONE_RECIPE_LABEL}
         title={DAY_ONE_RECIPE_TITLE}
         meta={DAY_ONE_RECIPE_META}
-        ingredients={DAY_ONE_INGREDIENTS}
+        items={DAY_ONE_INGREDIENTS}
         steps={DAY_ONE_STEPS}
       />
       <PlaylistCard text={DAY_ONE_PLAYLIST_TEXT} href={DAY_ONE_PLAYLIST_URL} linkLabel={DAY_ONE_PLAYLIST_LABEL} />

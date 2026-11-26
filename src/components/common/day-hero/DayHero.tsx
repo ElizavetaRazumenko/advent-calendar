@@ -4,7 +4,7 @@ type Props = {
   title: string
 }
 
-export const DayHero = ({ day, dateLabel, title }: Props) => {
+export const DayHero: React.FC<Props> = ({ day, dateLabel, title }) => {
   return (
     <header className="px-2 pb-2 text-center">
       <p className="font-display text-6xl leading-none font-semibold text-gold">{day}</p>

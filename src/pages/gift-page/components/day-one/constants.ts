@@ -1,7 +1,7 @@
-import type { CocoaIngredient, CocoaStep } from './types.ts'
+import type { RecipeItem, RecipeStep } from 'src/types/recipe.ts'
 
 export const DAY_ONE_LETTER =
-  'Этот день — про тихий вечер и кружку, от которой теплеют руки. Потому что я знаю, как ты любишь, когда дома спокойно, тихо и уютно. Пусть это будет одним из поводов сегодня это ощутить.'
+  'Этот день — про тихий вечер и кружку, от которой теплеют руки. Я знаю, как ты любишь, когда дома спокойно и уютно. Пусть это будет одним из поводов сегодня это ощутить!'
 
 export const DAY_ONE_PRACTICE_LABEL = 'Задание дня'
 
@@ -22,7 +22,7 @@ export const DAY_ONE_RECIPE_TITLE = 'Какао с корицей и солью'
 
 export const DAY_ONE_RECIPE_META = '1 кружка · 10 минут'
 
-export const DAY_ONE_INGREDIENTS: CocoaIngredient[] = [
+export const DAY_ONE_INGREDIENTS: RecipeItem[] = [
   { id: 'milk', name: 'Молоко', amount: '250 мл' },
   { id: 'cocoa', name: 'Какао', amount: '2 ч. л.' },
   { id: 'sugar', name: 'Сахар или мёд', amount: '2 ч. л.' },
@@ -32,7 +32,7 @@ export const DAY_ONE_INGREDIENTS: CocoaIngredient[] = [
   { id: 'topping', name: 'Зефир или взбитые сливки', amount: 'для подачи' },
 ]
 
-export const DAY_ONE_STEPS: CocoaStep[] = [
+export const DAY_ONE_STEPS: RecipeStep[] = [
   {
     id: 'paste',
     text: 'Разотри какао, сахар, соль и корицу с двумя ложками молока до пасты без комочков.',

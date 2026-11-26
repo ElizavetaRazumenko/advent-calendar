@@ -1,10 +1,10 @@
-export type CocoaIngredient = {
+export type RecipeItem = {
   id: string
   name: string
   amount: string
 }
 
-export type CocoaStep = {
+export type RecipeStep = {
   id: string
   text: string
 }
