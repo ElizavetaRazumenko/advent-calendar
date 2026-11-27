@@ -8,7 +8,7 @@ export const DAY_THREE_CHECKLIST_TITLE = 'Вечер без заслуг'
 export const DAY_THREE_CHECKLIST_TEXT = 'Пять пунктов. Можно пройти не все.'
 
 export const DAY_THREE_CHECKLIST_ITEMS = [
-  { id: 'water', label: 'Стакан воды' },
+  { id: 'coffee', label: 'Медленная чашка горячего кофе' },
   { id: 'shower', label: 'Тёплый душ' },
   { id: 'care', label: 'Патчи, масло и маска — без спешки' },
   { id: 'music', label: 'Любимая музыка' },
